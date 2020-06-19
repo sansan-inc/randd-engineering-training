@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/
+
+# Collabolation
+.circleci/
+.dependabot/
+
+# Other
+graph
+.idea/
+notebooks/
