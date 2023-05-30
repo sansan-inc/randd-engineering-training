@@ -1,0 +1,41 @@
+services:
+  api:
+    image: engineering-training/api:latest
+    build:
+      context: ./api
+      target: development
+    expose:
+      - 8000
+    ports:
+      - 8000:8000 # Host Port: Container Port
+    volumes:
+      - $HOME/.aws/credentials:/root/.aws/credentials:ro
+      - ./api:/app/
+    healthcheck:
+      test: [ "CMD", "curl", "localhost:8000/health" ]
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    env_file:
+      - ./api/.env
+
+  app:
+    image: engineering-training/app:latest
+    build:
+      context: ./app
+      target: development
+    volumes:
+      - ./app:/app/
+      - /app/.venv
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+
+  batch:
+    image: engineering-training/batch:latest
+    build:
+      context: ./batch
+    volumes:
+      - $HOME/.aws/credentials:/root/.aws/credentials:ro
+    env_file:
+      - ./batch/.env

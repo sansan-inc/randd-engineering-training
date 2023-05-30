@@ -1,0 +1,15 @@
+name: "Test App"
+
+on:
+  pull_request:
+    types: [synchronize, opened]
+    paths:
+      - python_training/app/**
+    branches-ignore:
+      - dependabot/**
+
+jobs:
+  python-test-with-docker:
+    uses: REUSABLE_WORKFLOW_REPOSITORY/.github/workflows/python-test-with-docker.yml@v1
+    with:
+      working_dir: python_training/app

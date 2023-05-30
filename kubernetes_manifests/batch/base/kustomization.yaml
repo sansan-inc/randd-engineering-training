@@ -1,0 +1,4 @@
+namespace: samples
+
+resources:
+  - cronjob.yaml

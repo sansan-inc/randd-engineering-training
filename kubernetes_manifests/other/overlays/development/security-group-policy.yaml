@@ -1,0 +1,11 @@
+apiVersion: vpcresources.k8s.aws/v1beta1
+kind: SecurityGroupPolicy
+metadata:
+  name: engineering-training-2023-sgp
+spec:
+  podSelector:
+    matchLabels:
+      securityGroupPolicy: engineering-training-2023
+  securityGroups:
+    groupIds:
+      - "" # SG IDを記載する

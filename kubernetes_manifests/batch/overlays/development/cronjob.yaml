@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: engineering-training-2023-batch
+spec:
+  schedule: "30 15 5 * *" # 毎月6日 00:30 JSTに起動
+  suspend: true
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: engineering-training-2023-batch
+              image: "" # イメージを指定
+              env:
+                - name: WORKSPACE
+                  value: s3://sample-bucket/gokart-workspaces
+                - name: OUTPUT_ATHENA_QUERY_S3_URL_BASE
+                  value: s3://sample-bucket/athena-query-results
+                - name: OUTPUT_RESULT_DATA_S3_URL_BASE
+                  value: s3://sample-bucket/results

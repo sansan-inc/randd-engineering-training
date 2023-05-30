@@ -1,0 +1,6 @@
+namespace: samples
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - target-group-binding.yaml

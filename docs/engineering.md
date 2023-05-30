@@ -71,32 +71,17 @@ ssh -i identity_file user@hostname
 
 鍵の作成は、 `ssh-keygen` コマンドで行います。手元の `~/.ssh` ディレクトリ以下に秘密鍵を配置します。なお、ディレクトリのパーミッションと秘密鍵のパーミッションは `600` に設定しておいてください（所有ユーザしか読み書きできない）。公開鍵はログイン先サーバの `~/.ssh/authorized_keys` に追記します。一行に一公開鍵です。
 
-はじめに特につまずくのが、踏み台経由でのログインです。
-企業ではセキュリティの都合上入り口を一つに絞りネットワークを分けます。
-つまり踏み台サーバにログインした後に、任意のサーバにログインします。
 ログインが毎回大変になるため、便利な `~/.ssh/config` の設定をします。
 
 ```sh
-Host prod-gateway
-     HostName 踏み台のIPアドレス(例:xxx.xxx.x.x)
-     Port 踏み台のポート(例:22)
-     User ユーザ名
-     IdentityFile "秘密鍵のファイル名"
-     
 Host dev-001
      HostName 開発環境のIPアドレス
      Port 開発環境のポート
      User ユーザ名
-     ProxyCommand ssh -W %h:%p prod-gateway
      IdentityFile "秘密鍵のファイル名"
-     LocalForward 8080 localhost:8080
 ```
 
-LocalForwardはポート転送の設定です。
-Jupyter NotebookやR Studioを使った開発を行う際に、便利です。
-リモートホストの特定のポートを手元に転送します。
-
-さて、ここまで設定できたら、後は `ssh dev-001` と入力すると、踏み台を経由してログインすることが可能となります。
+さて、ここまで設定できたら、後は `ssh dev-001` と入力するとログインすることが可能となります。
 
 ## きちんと使うGit
 
@@ -115,7 +100,7 @@ Gitは難しいので、「main_backup.py」みたいに名前を変えて保存
 
 ## Python(蛇を操る)
 
-https://docs.python.org/ja/3/index.html
+<https://docs.python.org/ja/3/index.html>
 
 Python は機械学習モデルの開発やWebアプリケーション開発に使われる言語です。
 特に機械学習では標準的な言語となっています。
@@ -128,7 +113,7 @@ Pythonは型を宣言する必要がなく、またコンパイルが不要で�
 もうコメントアウトは必要ありません。
 そうロギングがあれば。
 
-https://docs.python.org/ja/3/howto/logging.html
+<https://docs.python.org/ja/3/howto/logging.html>
 
 ここに Python での logging について詳細に説明されています。
 すべて読むのは大変ですが、一読することをお勧めします。
@@ -156,9 +141,9 @@ logger = logging.getLogger(__name__)
 
 ### itertoolsという便利な車輪を使おう
 
-https://buildersbox.corp-sansan.com/entry/tech19_itertools
+<https://buildersbox.corp-sansan.com/entry/tech19_itertools>
 
-https://more-itertools.readthedocs.io/en/stable/
+<https://more-itertools.readthedocs.io/en/stable/>
 
 itertools は非常に強力なライブラリです。
 何が強力かって聞く前に使うことでわかるくらい強力なライブラリです。
@@ -169,7 +154,7 @@ itertools は非常に強力なライブラリです。
 
 ### scikit-learn の恩恵を預かろう
 
-https://scikit-learn.org/stable/
+<https://scikit-learn.org/stable/>
 
 scikit-learn が提供するのは単なる機械学習ライブラリではなく、機械学習を進めるために必要なあれこれが詰まったライブラリです。
 例えば、評価やパラメータ探索などを含みます。
@@ -227,7 +212,7 @@ IAMロールは、AWSのサービス上で作成したものに対して権限�
 
 ### 公式リファレンスを読もう
 
-https://docs.python.org/ja/3/
+<https://docs.python.org/ja/3/>
 
 情報共有サイトは有益な場合もあります。
 しかしながら、できる限り仕様に関しては一次情報が大事です。

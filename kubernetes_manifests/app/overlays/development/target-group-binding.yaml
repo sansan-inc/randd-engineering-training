@@ -1,0 +1,6 @@
+apiVersion: elbv2.k8s.aws/v1beta1
+kind: TargetGroupBinding
+metadata:
+  name: engineering-training-2023-app
+spec:
+  targetGroupARN: "" # ターゲットグループを指定

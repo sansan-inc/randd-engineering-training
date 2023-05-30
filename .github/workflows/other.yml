@@ -1,0 +1,11 @@
+name: "Other Test"
+
+on:
+  pull_request:
+    types: [synchronize, opened]
+    branches-ignore:
+      - dependabot/**
+
+jobs:
+  other-test:
+    uses: REUSABLE_WORKFLOW_REPOSITORY/.github/workflows/other-test.yml@v1

@@ -1,0 +1,18 @@
+[flake8]
+max-line-length = 120
+extend-ignore = E501, E203
+extend-exclude =
+    setup.py,
+    build,
+    docs,
+    dist,
+    releases,
+    tests,
+    tools,
+    .venv,
+    .mypy_cache,
+    .pytest_cache,
+    .vscode,
+    .github,
+    .git,
+    __pycache__,

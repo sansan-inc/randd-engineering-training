@@ -1,0 +1,21 @@
+name: "ECR Image Update"
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_type:
+        type: choice
+        description: "Application type"
+        required: true
+        options:
+          - app
+          - api
+          - batch
+
+jobs:
+  ecr-image-update:
+    uses: REUSABLE_WORKFLOW_REPOSITORY/.github/workflows/ecr-image-update.yml@v1
+    with:
+      ecr_repository_name: engineering-training-2023/${{ inputs.app_type }}
+      working_dir: python_training/${{ inputs.app_type }}
+      environment: development

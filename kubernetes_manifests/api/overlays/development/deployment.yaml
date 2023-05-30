@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engineering-training-2023-api
+spec:
+  template:
+    spec:
+      containers:
+        - name: engineering-training-2023-api
+          image: "" # イメージを指定
+          env:
+            - name: BATCH_RESULT_S3_URL_BASE
+              value: s3://sample-bucket/results

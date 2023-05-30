@@ -1,0 +1,16 @@
+name: "Test Batch"
+
+on:
+  pull_request:
+    types: [synchronize, opened]
+    paths:
+      - python_training/batch/**
+    branches-ignore:
+      - dependabot/**
+
+jobs:
+  python-test-with-docker:
+    uses: REUSABLE_WORKFLOW_REPOSITORY/.github/workflows/python-test-with-docker.yml@v1
+    with:
+      working_dir: python_training/batch
+      run_pytest: true

@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "person-similarity-api"
+version = "1.0.0"
+description = "search person similarity api"
+authors = ["Sansan, Inc."]
+license = "MIT License"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+fastapi = {extras = ["all"], version = "^0.95.0"}
+pydantic = "^1.10.6"
+uvicorn = "^0.20.0"
+gunicorn = "^20.1.0"
+dependency-injector = "^4.41.0"
+s3path = "^0.4.1"
+s3fs = "^2023.3.0"
+structlog = "^22.3.0"
+asgi-correlation-id = "^4.1.0"
+python-dotenv = "^1.0.0"
+httpx = "^0.23.3"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^6.0.0"
+isort = "^5.12.0"
+mypy = "^1.1.1"
+black = "^23.1.0"
+pytest = "^7.2.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+# https://github.com/psf/black
+line-length = 120
+
+[tool.isort]
+# https://github.com/PyCQA/isort
+profile = "black"
+line_length = 120
+include_trailing_comma = true
+multi_line_output = 3
+
+[tool.mypy]
+plugins = [
+  "pydantic.mypy"
+]
+check_untyped_defs = true
+ignore_errors = false
+strict_optional = true
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_redundant_casts = true

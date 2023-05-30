@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engineering-training-2023-api
+spec:
+  selector:
+    matchLabels:
+      app: engineering-training-2023-api
+  template:
+    metadata:
+      labels:
+        app: engineering-training-2023-api
+        securityGroupPolicy: engineering-training-2023
+        infrastructure: fargate
+    spec:
+      serviceAccountName: engineering-training-2023-api
+      containers:
+        - name: engineering-training-2023-api
+          env:
+            - name: AWS_DEFAULT_REGION
+              value: ap-northeast-1
+          resources:
+            requests:
+              cpu: 100m
+              memory:
+                512Mi
+            limits:
+              memory: 512Mi

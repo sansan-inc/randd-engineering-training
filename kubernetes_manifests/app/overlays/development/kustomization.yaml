@@ -1,0 +1,8 @@
+resources:
+  - ../../base
+images:
+  - name: "" # イメージを指定
+    newTag: "" # タグを指定
+patchesStrategicMerge:
+  - target-group-binding.yaml
+  - deployment.yaml

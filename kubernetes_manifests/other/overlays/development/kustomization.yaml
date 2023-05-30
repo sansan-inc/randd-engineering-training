@@ -1,0 +1,7 @@
+namespace: samples
+
+resources:
+  - ../../base
+  - security-group-policy.yaml
+  - service-account-api.yaml
+  - service-account-batch.yaml
