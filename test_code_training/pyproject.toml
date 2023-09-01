@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "pytest_examples"
+version = "0.1.0"
+description = "python test code training"
+authors = ["Sansan, Inc."]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+pydantic = "^1.10.12"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.0.0"
+isort = "^5.12.0"
+mypy = "^1.4.1"
+black = "^23.7.0"
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+# https://github.com/psf/black
+line-length = 120
+
+[tool.isort]
+# https://github.com/PyCQA/isort
+profile = "black"
+line_length = 120
+include_trailing_comma = true
+multi_line_output = 3
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_errors = false
+strict_optional = true
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
