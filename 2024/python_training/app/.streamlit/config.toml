@@ -1,0 +1,25 @@
+[global]
+developmentMode = false
+
+[server]
+port = 8080
+runOnSave = false
+headless = true
+
+[browser]
+gatherUsageStats = false
+serverAddress = "localhost"
+
+[client]
+showErrorDetails = false
+toolbarMode = "minimal"
+
+[ui]
+hideTopBar = true
+
+[theme]
+base="light"
+primaryColor="#004E98"
+backgroundColor="#FFFFFF"
+secondaryBackgroundColor="#F8F9FA"
+textColor="#002060"

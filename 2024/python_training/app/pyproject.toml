@@ -1,0 +1,77 @@
+[tool.poetry]
+name = "person-similarity-app"
+version = "0.1.0"
+description = "search person similarity app"
+authors = ["Sansan, Inc."]
+license = "Proprietary"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+numpy = "^1.26.0"
+streamlit = "^1.33.0"
+streamlit-agraph = "^0.0.45"
+requests = "^2.28.2"
+pydantic = "^2.7.0"
+pandera = "^0.18.3"
+python-dateutil = "^2.9.0.post0"
+plotly = "^5.22.0"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.9.0"
+pytest = "^8.1.1"
+ruff = "^0.3.7"
+types-requests = "^2.31.0.20240406"
+types-python-dateutil = "^2.9.0.20240316"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_errors = false
+strict_optional = true
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+ignore_missing_imports = true
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+select = ["ALL"]
+ignore = [
+    # missing-trailing-comma
+    "COM812",
+    # ambiguous-variable-name
+    "E741",
+    #  single-line-implicit-string-concatenation
+    "ISC001",
+    # assert
+    "S101",
+    # suspicious-non-cryptographic-random-usage
+    "S311",
+    # unnecessary-assign
+    "RET504",
+    # magic-value-comparison
+    "PLR2004",
+    # pydocstyle
+    "D",
+    # flake8-annotations
+    "ANN",
+]
+exclude = [
+    ".git",
+    ".github",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+]
+
+[tool.ruff.extend-per-file-ignores]
+"pages/*" = ["INP001"]
+
+[tool.ruff.mccabe]
+max-complexity = 5
