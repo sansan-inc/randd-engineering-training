@@ -1,0 +1,7 @@
+namespace: samples
+
+resources:
+  - ../../base
+  - configmap-bigquery.yaml
+  - service-account-api.yaml
+  - service-account-batch.yaml

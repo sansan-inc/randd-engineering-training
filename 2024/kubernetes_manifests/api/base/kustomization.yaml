@@ -1,0 +1,5 @@
+namespace: samples
+
+resources:
+  - deployment.yaml
+  - service.yaml

@@ -1,0 +1,12 @@
+resources:
+- ../../base
+images:
+  - name: "" # イメージを指定
+    newTag: "" # タグを指定
+patchesStrategicMerge:
+  - deployment.yaml
+patches:
+- target:
+    kind: Ingress
+    name: engineering-training-app
+  path: ingress.yaml

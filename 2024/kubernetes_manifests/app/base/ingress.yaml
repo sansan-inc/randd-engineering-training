@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: engineering-training-app
+  annotations:
+    alb.ingress.kubernetes.io/security-groups: security-group-id
+    alb.ingress.kubernetes.io/healthcheck-path: /apps/sample/healthz
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+
+spec:
+  ingressClassName: circuit-trial
+  rules:
+    - http:
+        paths:
+          - path: /apps/sample
+            pathType: Prefix
+            backend:
+              service:
+                name: engineering-training-app
+                port:
+                  number: 80

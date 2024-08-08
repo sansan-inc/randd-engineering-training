@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engineering-training-api
+spec:
+  selector:
+    matchLabels:
+      app: engineering-training-api
+  template:
+    metadata:
+    spec:
+      serviceAccountName: engineering-training
+      containers:
+        - name: engineering-training-api
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 3000
+            allowPrivilegeEscalation: false
+          env:
+            - name: AWS_DEFAULT_REGION
+              value: "ap-northeast-1"
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: "/var/tmp/config-aws-eks-provider.json"
+            - name: GOOGLE_CLOUD_PROJECT
+              value: "sample-project"
+          volumeMounts:
+            - name: config
+              mountPath: /var/tmp
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              memory: 1Gi
+      volumes:
+        - name: config
+          configMap:
+            name: engineering-training-batch

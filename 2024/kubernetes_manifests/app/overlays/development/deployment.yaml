@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engineering-training-app
+spec:
+  template:
+    spec:
+      containers:
+        - name: engineering-training-app
+          image: "" # イメージを指定

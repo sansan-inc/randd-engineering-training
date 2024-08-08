@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: engineering-training-batch
+data:
+  config-aws-eks-provider.json: |
+  # GCP Bigquery向けの認証構成ファイル

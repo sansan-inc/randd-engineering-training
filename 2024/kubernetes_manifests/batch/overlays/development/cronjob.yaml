@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: engineering-training-batch
+spec:
+  schedule: "30 15 5 * *" # 毎月6日 00:30 JSTに起動 （分 時 日 月 年）
+  suspend: true
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: engineering-training-batch
+              image: "" # イメージを指定
+              resources:
+                requests:
+                  memory: 5G
+                  cpu: "1"
+                limits:
+                  memory: 5G
+                  cpu: "1"
+              env:
+                - name: WORKSPACE
+                  value: "s3://sample-bucket/gokart_workspaces"
+                - name: OUTPUT_RESULT_DATA_S3_URL_BASE
+                  value: "s3://sample-bucket/results"

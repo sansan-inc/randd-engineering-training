@@ -1,0 +1,11 @@
+namespace: samples
+
+resources:
+  - ../../base
+
+images:
+  - name: "" # イメージを指定
+    newTag: "" # タグを指定
+
+patches:
+  - path: cronjob.yaml

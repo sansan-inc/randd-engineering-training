@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: engineering-training-batch
+spec:
+  startingDeadlineSeconds: 60
+  concurrencyPolicy: Replace
+  failedJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 3000
+          serviceAccountName: engineering-training
+          restartPolicy: OnFailure
+          containers:
+            - name: engineering-training-batch
+              securityContext:
+                allowPrivilegeEscalation: false
+              env:
+                - name: AWS_DEFAULT_REGION
+                  value: "ap-northeast-1"
+                - name: GOOGLE_CLOUD_PROJECT
+                  value: "sample-project"
+                - name: GOOGLE_APPLICATION_CREDENTIALS
+                  value: "/var/tmp/config-aws-eks-provider.json"
+              volumeMounts:
+                - name: config
+                  mountPath: /var/tmp
+          volumes:
+            - name: config
+              configMap:
+                name: engineering-training-batch
